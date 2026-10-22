@@ -1,56 +1,115 @@
-# Hi, I'm Yanna Yang / 杨艳娜
+# 杨艳娜 · Yanna Yang
 
-### 3D Point Cloud Registration · Virtual Reassembly · AI Agents
+**软件工程硕士研究生 | 西北师范大学**  
+M.Sc. Student in Software Engineering, Northwest Normal University
 
-西北师范大学软件工程硕士研究生。我主要研究**三维点云配准、可靠对应筛选、碎片化对象虚拟重建**，同时探索 **Qwen + Neo4j + RAG** 驱动的简牍知识图谱与问答智能体。
+[研究方向](#研究方向) · [代表论文与效果展示](#代表论文与效果展示) · [项目展示](#项目展示) · [学术成果](#学术成果) · [教育与技能](#教育与技能)
 
-**Research interests:** Point cloud registration · Correspondence selection · Fracture retrieval · 3D datasets · Knowledge graphs · AI agents
+[Email](mailto:18822044020@163.com) / [JianduReg Code](https://github.com/yannayang58-dev/JianduReg) / [数字简牍平台](https://jdsjk.nwnu.edu.cn/) / [个人网站](https://yannayang58-dev.github.io/)
 
-[Email](mailto:18822044020@163.com) · [JianduReg](https://github.com/yannayang58-dev/JianduReg) · [数字简牍平台](https://jdsjk.nwnu.edu.cn/) · [个人网站](https://yannayang58-dev.github.io/)
+## 个人简介
 
-## 真实简牍碎片的配准与虚拟缀合
+我目前在西北师范大学攻读软件工程硕士学位，研究三维视觉与文化遗产智能计算。主要工作围绕**三维点云配准、可靠对应关系筛选、简牍碎片检索及虚拟重建**展开，并探索**知识图谱与大语言模型智能体**在简牍文献组织、检索与问答中的应用。
 
-### JianduReg — 从分离碎片到虚拟重组
+My research focuses on 3D point cloud registration, correspondence selection, fracture retrieval, and virtual reassembly for cultural heritage. I also work on knowledge graph enhanced question answering and AI agents.
+
+## 研究方向
+
+| 方向 | 研究重点 |
+| --- | --- |
+| **三维点云配准 / 3D Registration** | 特征匹配、可靠对应筛选、刚性位姿估计与粗到精配准 |
+| **碎片虚拟重建 / Virtual Reassembly** | 简牍断裂面建模、碎片检索、几何闭合与三维数据集构建 |
+| **知识图谱与智能体 / Knowledge Graphs & Agents** | Qwen、Neo4j、Text-to-Cypher、RAG 与多跳问答 |
+
+## 代表论文与效果展示
+
+### JianduReg: 断裂面引导的简牍多阶段点云配准
 
 **A Fracture Surface Guided Multistage Registration Framework for Bamboo Slip Point Clouds**  
 Teng Wan, **Yanna Yang**, Fengchen Qi, Qiang Zhang, Ying Qi, Shaoyi Du  
-**npj Heritage Science · Accepted, 2026 · 第二作者**  
-[公开代码与复现示例](https://github.com/yannayang58-dev/JianduReg)
+*npj Heritage Science*, **Accepted, 2026** · 第二作者  
+[Code & Reproducibility Examples](https://github.com/yannayang58-dev/JianduReg)
 
-针对简牍极薄、断裂面狭窄、磨损和缺失引起的配准困难，结合断裂面几何先验、法向增强深度粗配准（NE-DCP）与双向最大相关熵精配准（BMCC-ICP），生成供专家进一步评估的非接触式虚拟缀合结果。
+面向极薄简牍、狭窄断裂面、磨损和缺失等困难，结合断裂面几何先验、法向增强粗配准（NE-DCP）与双向最大相关熵精配准（BMCC-ICP），支持非接触式虚拟缀合。
 
-![JianduReg 真实扫描简牍配准前后的虚拟缀合结果](jiandureg-reassembly.png)
+<table>
+<tr><td align="center"><b>真实简牍的虚拟缀合</b></td><td align="center"><b>方法总体框架</b></td></tr>
+<tr>
+<td width="50%"><img src="jiandureg-fig10.jpg" alt="JianduReg Fig.10：真实简牍碎片的缀合前后对比" width="100%"></td>
+<td width="50%"><img src="jiandureg-fig2.jpg" alt="JianduReg Fig.2：断裂面提取、NE-DCP 与 BMCC-ICP 方法框架" width="100%"></td>
+</tr>
+</table>
 
-*真实扫描简牍的配准前后对比。来自 JianduReg 论文 Fig. 10；左右为分离碎片与对应的虚拟重组结果。*
+**效果说明。** 左图为论文 Fig. 10 中两个真实扫描样本的缀合前后对比；右图为 Fig. 2 方法框架。输入断裂面由半自动裁剪与专家修正获得。
 
 <details>
-<summary><b>查看方法框架与真实断裂面结果对比</b></summary>
+<summary><b>展开查看真实数据对比、消融实验及完整论文图组（Fig. 1–10）</b></summary>
 
-![JianduReg 方法框架](jiandureg-pipeline.png)
+#### 真实扫描简牍的配准效果
 
-*Fig. 2：断裂面提取 → 法向增强特征与交叉注意力 → SVD 粗位姿 → 双向 MCC-ICP 精配准。*
+<img src="jiandureg-fig9.jpg" alt="Fig.9：PRNet、RIENet、RPMNet 与 JianduReg 的真实简牍配准结果" width="720">
 
-![真实简牍断裂面配准方法对比](jiandureg-comparison.png)
+*Fig. 9：真实扫描断裂面上的学习方法对比；列标题与样本标注保持原图。青色和黄色为待配准的两部分。*
 
-*Fig. 9：真实简牍断裂面上 PRNet、RIENet、RPMNet 与 JianduReg（Ours）的定性对比。青色与黄色表示待配准的两部分，图中保留原论文的方法和样本标注。*
+<img src="jiandureg-fig8.jpg" alt="Fig.8：传统方法与 JianduReg 的真实扫描简牍配准效果对比" width="720">
 
-真实简牍数据缺少精确位姿真值；闭合度、间隙等几何指标与可视化是辅助评估证据，不能替代专家判断。
+*Fig. 8：真实扫描简牍上与传统方法的定性比较。*
+
+#### 模块消融与几何建模
+
+<img src="jiandureg-fig5.jpg" alt="Fig.5：不同配准模块组合的消融实验" width="720">
+
+*Fig. 5：不同模块组合在真实扫描简牍上的可视化消融。*
+
+<img src="jiandureg-fig3.jpg" alt="Fig.3：半自动提取的简牍断裂面及局部细节" width="720">
+
+*Fig. 3：断裂面选取及局部几何细节。*
+
+<img src="jiandureg-fig4.jpg" alt="Fig.4：法向增强 Deep Closest Point 粗配准网络" width="720">
+
+*Fig. 4：NE-DCP 粗配准网络。*
+
+#### 合成简牍基准
+
+<img src="jiandureg-fig6.png" alt="Fig.6：合成简牍上与传统方法的比较" width="720">
+
+*Fig. 6：合成简牍上的传统方法对比。*
+
+<img src="jiandureg-fig7.png" alt="Fig.7：合成简牍上与学习方法的比较" width="720">
+
+*Fig. 7：合成简牍上的学习方法对比。*
+
+#### 研究背景
+
+<img src="jiandureg-fig1.jpg" alt="Fig.1：简牍样本及其典型退化形态" width="720">
+
+*Fig. 1：简牍样本、墨迹磨损、裂纹与材料缺失等典型退化。*
+
+真实扫描简牍缺少精确位姿真值，几何闭合指标与可视化作为辅助证据，供文保专家进一步评估。
 
 </details>
 
-## 配准、检索与数据集研究
+## 项目展示
 
-| 工作 | 研究内容 | 本人署名 / 状态 |
-| --- | --- | --- |
-| **Less Is More** | Bilateral Coverage-Aware Correspondence Selection for Efficient Point Cloud Registration；双边覆盖感知的对应筛选与高效点云配准 | 第一作者 · 3DV 2027 在审（2026 投稿） |
-| **JianduRank** | Fracture-Pretrained Query-Conditioned Reranking for 3D Jiandu Fracture Retrieval；全局 Top-50 召回、断裂预训练、双向交叉注意力和难负样本重排序 | 第一作者 · 研究稿件，接收/发表状态待确认 |
-| **3DJiandu** | A Synthetic and Real-World 3D Dataset for Virtual Reconstruction of Fragmented Jiandu Manuscripts；合成与真实三维简牍数据集 | 第二作者 · Scientific Data 在审，2026 |
+### 1. 基于深度学习的简牍缀合系统
 
-JianduRank 稿件报告：来源组互斥测试中，48 个定向查询、每个查询 95 个候选，融合集成达到 **35.42% R@1 / 0.4721 MRR**。检索用于筛出待几何验证的候选，尚不等同于完成刚性配准。
+**校级大学生创新创业项目 · 主持 · 2025.12–2026.12**
 
-**在审和未确认接收工作的实现代码暂不公开。**
+围绕三维简牍数据集构建、断裂面配准和碎片虚拟重组开展研究与系统建设。以下动图展示简牍碎片的三维配准过程，保留原始帧序与播放时序。
 
-## AI Agents · 简牍知识图谱与智能问答
+<table>
+<tr><td align="center"><b>三维配准动态展示 I</b></td><td align="center"><b>三维配准动态展示 II</b></td></tr>
+<tr>
+<td width="50%"><img src="animation_2.gif" alt="简牍缀合项目三维动态展示，原文件 animation_2.gif" width="100%"></td>
+<td width="50%"><img src="animation_4.gif" alt="简牍缀合项目三维动态展示，原文件 animation_4.gif" width="100%"></td>
+</tr>
+</table>
+
+[查看动图 I 原文件](animation_2.gif) · [查看动图 II 原文件](animation_4.gif)
+
+软件成果：**基于简牍断裂面的简牍缀合系统**，软件著作权申请中，编号 **2026R11L1818921**（2026）。
+
+### 2. 简牍知识图谱与问答 Agent
 
 **Qwen · Neo4j · Text-to-Cypher · RAG · Backend API**  
 项目时间：2024.12–2025.01
@@ -73,13 +132,50 @@ flowchart LR
 
 *项目结构示意；不是在线模型演示，也不表示已公开 Agent 实现代码。*
 
-## 其他已接收论文
+### 3. “数字简牍”信息化平台与文字数据管线
+
+**甘肃省 2023 年度重点人才项目 · 2023010 · 骨干参与 · 2024.02–2026.03**  
+[访问数字简牍开放平台](https://jdsjk.nwnu.edu.cn/)
+
+参与平台后端与协同标注流程建设，实现整简图像到单字切片的自动裁剪、背景分离、数据版本管理和质量校验，支撑 OCR 训练、文字检索与知识图谱构建。
+
+```mermaid
+flowchart LR
+    A[整简图像] --> B[协同标注与规范]
+    B --> C[自动裁剪 / 背景分离]
+    C --> D[标准化单字数据集]
+    D --> E[版本管理 / 质量校验]
+    E --> F[OCR 训练]
+    E --> G[文字检索]
+    E --> H[知识图谱]
+```
+
+*项目数据流展示；基于已完成工作绘制，非平台运行截图。*
+
+## 学术成果
+
+### 在审论文与研究工作
+
+
+| 工作 | 研究内容 | 本人署名 / 状态 |
+| --- | --- | --- |
+| **Less Is More** | Bilateral Coverage-Aware Correspondence Selection for Efficient Point Cloud Registration；双边覆盖感知的对应筛选与高效点云配准 | 第一作者 · 3DV 2027 在审（2026 投稿） |
+| **JianduRank** | Fracture-Pretrained Query-Conditioned Reranking for 3D Jiandu Fracture Retrieval；全局 Top-50 召回、断裂预训练、双向交叉注意力和难负样本重排序 | 第一作者 · 研究稿件，接收/发表状态待确认 |
+| **3DJiandu** | A Synthetic and Real-World 3D Dataset for Virtual Reconstruction of Fragmented Jiandu Manuscripts；合成与真实三维简牍数据集 | 第二作者 · Scientific Data 在审，2026 |
+
+JianduRank 稿件报告：来源组互斥测试中，48 个定向查询、每个查询 95 个候选，融合集成达到 **35.42% R@1 / 0.4721 MRR**。检索用于筛出待几何验证的候选，尚不等同于完成刚性配准。
+
+**在审和未确认接收工作的实现代码暂不公开。**
+
+### 其他已接收论文
+
 
 - **Adaptive Multi-Feature Fusion for Visible-Infrared Image Registration and Character Enhancement of Bamboo Slips.** Teng Wan, Fengchen Qi, **Yanna Yang**, Ying Qi, Qiang Zhang, Shaoyi Du. *npj Heritage Science*, 14, Article 96, 2026；简历标注 Accepted。
 - **Reliability-Guided Source-Prior RGB–IR Fusion for Bamboo Manuscript Enhancement.** Jintan Han, Ying Qi, Qiang Zhang, Teng Wan, **Yanna Yang**. *PRCV 2026*（CCF-C），Accepted。
 - **Sparse Grassmann Attention for Color-Preserving Infrared–Visible Fusion of Bamboo-Slip Images.** Jintan Han, Ying Qi, Qiang Zhang, Teng Wan, **Yanna Yang**. *ICIG 2026*，Accepted；会议及分类按简历记录。
 
-## 项目与实践
+## 科研项目与实习
+
 
 | 时间 | 项目 / 角色 | 主要工作 |
 | --- | --- | --- |
@@ -88,9 +184,10 @@ flowchart LR
 | 2025.12–2026.12 | **基于深度学习的简牍缀合系统**；校级大学生创新创业项目，主持 | 科学问题凝练、技术路线与实验方案；三维简牍数据集、断裂面配准与虚拟重组 |
 | 2025.09–2026.03 | **中电万维有限公司**，甘肃兰州；云中台实习 | 云中台相关实践 |
 
-**软件成果：**基于简牍断裂面的简牍缀合系统，软件著作权申请中，编号 **2026R11L1818921**（2026）。
+**软件成果：** 基于简牍断裂面的简牍缀合系统，软件著作权申请中，编号 **2026R11L1818921**（2026）。
 
 ## 教育与技能
+
 
 - **西北师范大学** · 软件工程硕士 · 2024.09–至今
 - **天津理工大学** · 制药工程本科 · 2018.09–2022.06
@@ -101,5 +198,6 @@ flowchart LR
 **English:** CET-4、CET-6，英文文献阅读与英文学术写作。
 
 ---
-欢迎交流 **3D registration、virtual reassembly、digital cultural heritage 与 AI agents**。  
-论文状态依据所提供简历；图像取自本人参与的 JianduReg 论文，仅提取排版，不生成或修改实验结果。
+联系： [18822044020@163.com](mailto:18822044020@163.com)。欢迎就三维配准、数字文化遗产与 AI agents 交流。
+
+论文状态依据所提供材料；JianduReg 图组来自原始论文，动图来自本人提供的项目素材。未接收论文的实现代码、模型与训练数据不在本主页公开。
